@@ -29,8 +29,13 @@ st.markdown(
             justify-content: center;
             gap: 10px;
         }
-        span{
+        .nowrap{
             white-space: nowrap;
+        }
+        .result-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
     </style>
     """,
@@ -39,7 +44,7 @@ st.markdown(
 
 # ส่วนหัวของเว็บแอป
 st.markdown("<div class='main'>", unsafe_allow_html=True)
-st.markdown("<div class='title'><span>📌</span><span>Aspect-based Sentiment Analysis (ABSA)</span></div>", unsafe_allow_html=True)
+st.markdown("<div class='title'><span>📌</span><span class='nowrap'>Aspect-based Sentiment Analysis (ABSA)</span></div>", unsafe_allow_html=True)
 st.markdown(
     """
     <div class='content'>
@@ -61,13 +66,20 @@ st.markdown(
 )
 
 # กล่องรับข้อความ
-user_input = st.text_input("✍️ ใส่ข้อความตรงนี้:", "")
+user_input = st.text_input("✍️ ใส่ข้อความตรงนี้ :", "")
 
 # ปุ่ม Apply
 if st.button("Apply"):
     if user_input:
-        st.success("✅ ข้อความที่คุณป้อน: ")
-        st.write(user_input)
+        st.markdown(
+            f"""
+            <div class='result-container'>
+                <span style='color: green; font-weight: bold;'>✅ ข้อความที่คุณป้อน :</span>
+                <span>{user_input}</span>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
     else:
         st.warning("⚠️ กรุณากรอกข้อความก่อนกด Apply")
     
