@@ -1,6 +1,4 @@
 import streamlit as st
-import os
-os.system("pip install sentencepiece")
 import torch
 from transformers import MBartForConditionalGeneration, MBartTokenizer
 from huggingface_hub import hf_hub_download
